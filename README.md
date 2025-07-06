@@ -11,10 +11,8 @@ Spring Boot 기반으로 만든 인증/인가 API 프로젝트입니다.
 - **Spring Boot 3.x**
 - **Spring Security**
 - **JWT (jjwt)**
-- **MySQL / H2 (테스트용)**
 - **JPA (Hibernate)**
 - **Lombok**
-- **Gradle**
 
 <br>
 
