@@ -11,6 +11,25 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    # Docker로 PostgreSQL 띄우기
+    services:
+      postgres:
+        image: postgres:15
+        ports:
+          - 5432:5432
+
+        env:
+            POSTGRES_DB_URL: localhost:5432
+            POSTGRES_DB: testdb
+            POSTGRES_USER: testuser
+            POSTGRES_PASSWORD: testpass
+
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
