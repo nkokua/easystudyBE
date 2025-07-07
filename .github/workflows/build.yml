@@ -2,20 +2,20 @@ name: build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
-   
+
     runs-on: ubuntu-latest
-    
+
     env:
       SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/testdb
       SPRING_DATASOURCE_USERNAME: testuser
       SPRING_DATASOURCE_PASSWORD: testpass
-      
+
     # Docker로 PostgreSQL 띄우기
     services:
       postgres:
@@ -24,10 +24,10 @@ jobs:
           - 5432:5432
 
         env:
-            POSTGRES_DB_URL: localhost:5432
-            POSTGRES_DB: testdb
-            POSTGRES_USER: testuser
-            POSTGRES_PASSWORD: testpass
+          POSTGRES_DB_URL: localhost:5432
+          POSTGRES_DB: testdb
+          POSTGRES_USER: testuser
+          POSTGRES_PASSWORD: testpass
 
         options: >-
           --health-cmd pg_isready
@@ -36,30 +36,30 @@ jobs:
           --health-retries 5
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: '0'
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: '0'
 
-    - name: Set up Temurin JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: 'gradle'
+            # - name: Set up Temurin JDK 17
+            #   uses: actions/setup-java@v4
+            #   with:
+            #     java-version: '17'
+            #     distribution: 'temurin'
+            #     cache: 'gradle'
 
-    - name: Grant execute permission for Gradle
-      run: chmod +x gradlew
+            # - name: Grant execute permission for Gradle
+            # run: chmod +x gradlew
 
-    - name: Build with out Test
-      run: ./gradlew build -x test
+            # - name: Build with out Test
+            # run: ./gradlew build -x test
 
-    - name: Move Jar file
-      run: |
-          mv ./build/libs/EasyStudy.jar ./EasyStudy.jar
-          ls ./
+            # - name: Move Jar file
+            # run: |
+            # mv ./build/libs/EasyStudy.jar ./EasyStudy.jar
+          # ls ./
 
-    - uses: actions/upload-artifact@v4
-      with:
-        name: easystudy-artifact
-        path: ./EasyStudy.jar
+      - uses: actions/upload-artifact@v4
+        with:
+          name: easystudy-artifact
+          path: ./EasyStudy.jar
