@@ -10,11 +10,12 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
-
+      SECRET: ${SECRET}
+      ACCESS_TIME: ${ACCESS_TIME}
+      REFRESH_TIME: ${REFRESH_TIME}
       # 기타 필요한 스프링 부트 환경 변수
     depends_on: # 이 서비스가 시작되기 전에 의존하는 서비스를 먼저 시작합니다.
       - db
-
   db:
     image: postgres:latest
     container_name: postgres-container
