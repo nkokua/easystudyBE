@@ -1,0 +1,21 @@
+name: deploy
+on:
+  workflow_run:
+    workflows: ["build"]     # 위의 CI 워크플로우 name과 정확히 일치
+    types:
+      - completed
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.3.0
+      - name: execute remote ssh & deploy backend server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            sudo git pull origin master
+            docker-compose down
+            docker-compose up --build
