@@ -6,11 +6,16 @@ on:
     types: [completed]
     branches:
       - 'master'
+
+
+permissions:
+    actions: read
 jobs:
   deploy:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
+      -
       - uses: actions/checkout@v3.3.0
       - name: Download Artifact
         uses: actions/download-artifact@v4
