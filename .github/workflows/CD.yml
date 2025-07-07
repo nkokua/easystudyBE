@@ -1,7 +1,9 @@
 name: deploy
 on:
-  push:
-    branches: ['master']
+  workflow_run:
+    workflows: ["build"]     # 위의 CI 워크플로우 name과 정확히 일치
+    types:
+      - completed
 jobs:
   deploy:
     runs-on: ubuntu-latest
