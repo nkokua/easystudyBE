@@ -18,17 +18,14 @@ public class LoginRequestDto {
     @Size(min = 6, message = "비밀번호는 6자 이상으로 입력해주세요.")
     private String password;
 
-    // 기본 생성자 (JSON 바인딩을 위해 Jackson 등이 필요로 할 수 있음)
     public LoginRequestDto() {
     }
 
-    // 모든 필드를 포함하는 생성자
     public LoginRequestDto(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-    // Getter 메소드
     public String getEmail() {
         return email;
     }
@@ -37,7 +34,6 @@ public class LoginRequestDto {
         return password;
     }
 
-    // Setter 메소드
     public void setEmail(String email) {
         this.email = email;
     }

@@ -15,19 +15,17 @@ public class CustomUserPrincipal implements UserDetails {
     }
 
     @Override
-    // 이 사용자의 사용자 이메일반환 (구현때문에 어쩔수가없다.)
+
     public String getUsername() {
         return user.getEmail();
     }
 
     @Override
-    // 이 사용자의 비밀번호를 반환
     public String getPassword() {
         return user.getPassword();
     }
 
     @Override
-    // 이 사용자에게 부여된 권한(예: 역할) 목록을 반환
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> collection = new ArrayList<>();
         collection.add(new GrantedAuthority() {

@@ -56,6 +56,6 @@ jobs:
 
     - name: Change file name
       run: |
-          mv ./build/libs/*.jar ./easystudy.jar
+          mv ./build/libs/*.jar ./EasyStudy.jar
           ls ./build/libs
 
