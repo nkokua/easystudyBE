@@ -16,7 +16,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: easystudy-artifact
-          path: .
+          path: ./EasyStudy.jar
 
 
       - name: execute remote ssh & deploy backend server
