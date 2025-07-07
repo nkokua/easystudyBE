@@ -24,7 +24,7 @@ jobs:
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.ssh-rsa key }}
           script: |
             cd /home/ec2-user/easystudyBE/
             sudo git pull origin master
