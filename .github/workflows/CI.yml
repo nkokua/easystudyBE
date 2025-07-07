@@ -59,7 +59,7 @@ jobs:
           mv ./build/libs/EasyStudy.jar ./EasyStudy.jar
           ls ./
 
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: easystudy-artifact
         path: ./EasyStudy.jar
