@@ -1,0 +1,32 @@
+name: deploy
+
+on:
+  workflow_run:
+    workflows: ["build"]     # 위의 CI 워크플로우 name과 정확히 일치
+    types:
+      - completed
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.3.0
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: easystudy-artifact
+          path: .
+
+
+      # - name: execute remote ssh & deploy backend server
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.EC2_HOST }}
+      #     username: ${{ secrets.EC2_USER }}
+      #     key: ${{ secrets.SSH_KEY }}
+      #     script: |
+      #       cd /home/ec2-user/easystudyBE/
+      #       sudo git pull origin master
+      #       docker-compose down
+      #       docker-compose up --build -d
