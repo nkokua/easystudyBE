@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   spring-boot-app:
-    image: 2025-easystudy:1.0
+    image: dockerkokokuku/2025-easystudy:1.0
     container_name: spring-boot-container
     ports:
       - "8080:8080" # 로컬 8080 포트를 컨테이너 8080 포트에 연결
