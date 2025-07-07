@@ -54,8 +54,8 @@ jobs:
     - name: Build with out Test
       run: ./gradlew build -x test
 
-    - name: Change file name
+    - name: Move Jar file
       run: |
-          mv ./build/libs/*.jar ./EasyStudy.jar
-          ls ./build/libs
+          mv ./build/libs/EasyStudy.jar ./EasyStudy.jar
+          ls ./
 
