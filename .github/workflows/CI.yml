@@ -56,6 +56,6 @@ jobs:
 
     - name: Change file name
       run: |
-          mv ./build/libs/*SNAPSHOT.jar ./springboot-aws.jar
+          mv ./build/libs/*.jar ./easystudy.jar
           ls ./build/libs
 
