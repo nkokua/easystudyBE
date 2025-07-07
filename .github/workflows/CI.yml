@@ -8,9 +8,14 @@ on:
 
 jobs:
   build:
-
+   
     runs-on: ubuntu-latest
-
+    
+    env:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/testdb
+      SPRING_DATASOURCE_USERNAME: testuser
+      SPRING_DATASOURCE_PASSWORD: testpass
+      
     # Docker로 PostgreSQL 띄우기
     services:
       postgres:
