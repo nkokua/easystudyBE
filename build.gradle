@@ -54,3 +54,7 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+bootJar {
+    archiveFileName = 'EasyStudy.jar' // JAR 파일 이름 설정
+}

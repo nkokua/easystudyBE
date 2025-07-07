@@ -1,8 +1,9 @@
 version: '3.8'
 
 services:
-  app:
-    build: .
+  spring-boot-app:
+    image: 2025-easystudy:1.0
+    container_name: spring-boot-container
     ports:
       - "8080:8080" # 로컬 8080 포트를 컨테이너 8080 포트에 연결
     environment: # 환경 변수를 사용하여 스프링 부트 애플리케이션 설정
@@ -13,13 +14,10 @@ services:
       # 기타 필요한 스프링 부트 환경 변수
     depends_on: # 이 서비스가 시작되기 전에 의존하는 서비스를 먼저 시작합니다.
       - db
-    # volumes: # 개발 중 소스 코드 변경 시 자동 리로드 (선택 사항)
-    #   - .:/app
-    #   - /app/node_modules # Node.js 프로젝트의 경우 (React Native)
 
   db:
     image: postgres:latest
-    container_name: mydb
+    container_name: postgres-container
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}

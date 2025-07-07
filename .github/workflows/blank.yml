@@ -14,7 +14,7 @@ jobs:
     # Docker로 PostgreSQL 띄우기
     services:
       postgres:
-        image: postgres:15
+        image: postgres:17
         ports:
           - 5432:5432
 
@@ -49,12 +49,8 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
-    - name: Run Tests
-      run: ./gradlew test
+    - name: Change file name
+      run: |
+          mv ./build/libs/*SNAPSHOT.jar ./springboot-aws.jar
+          ls ./build/libs
 
-    - name: Archive Build Artifacts
-      if: success()
-      uses: actions/upload-artifact@v4
-      with:
-        name: springboot-build
-        path: build/libs/*.jar
