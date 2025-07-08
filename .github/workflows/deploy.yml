@@ -19,6 +19,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
+            cd /home/ec2-user/easystudyBE/
             docker pull ${{ secrets.DOCKER_USERNAME }}/easystudy:latest
             docker-compose down
             docker-compose up --build -d
