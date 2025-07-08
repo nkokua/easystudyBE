@@ -6,32 +6,15 @@ on:
     types: [completed]
     branches:
       - 'master'
-
-
-permissions:
-    actions: read
-jobs:
-  deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    runs-on: ubuntu-latest
-    steps:
       -
-      - uses: actions/checkout@v3.3.0
-      - name: Download Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: easystudy-artifact
-          path: ./EasyStudy.jar
-
-
       - name: execute remote ssh & deploy backend server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.SSH_KEY }}
+          port: 22
           script: |
-            cd /home/ec2-user/easystudyBE/
-            sudo git pull origin master
+            docker pull ${{ secrets.DOCKER_USERNAME }}/easystudy:latest
             docker-compose down
             docker-compose up --build -d

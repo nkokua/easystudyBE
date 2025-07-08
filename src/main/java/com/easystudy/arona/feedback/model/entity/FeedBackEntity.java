@@ -1,28 +1,40 @@
 package com.easystudy.arona.feedback.model.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import org.hibernate.annotations.Type;
+import com.easystudy.arona.user.model.entity.UserEntity;
+import jakarta.persistence.*;
 
+
+import java.sql.Timestamp;
 import java.util.UUID;
-/*
+
 
 @Entity
 @Table
-@TypeDefs({
-        @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
-})
 public class FeedBackEntity {
     @Id
     @Column(nullable = false, unique = true)
     private String uuid = UUID.randomUUID().toString();
 
+    @ManyToOne
+    @JoinColumn(name = "user_uuid")
+    private UserEntity user;
 
-    @Type(type = "jsonb")
+    //대답
     @Column(columnDefinition = "jsonb")
-    private FeedbackData data;
+    private String data;
+
+    @Column
+    private String character;
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
+    private Timestamp timestamp;
 }
-*/
+

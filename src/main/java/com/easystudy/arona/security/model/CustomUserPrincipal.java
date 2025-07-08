@@ -1,4 +1,4 @@
-package com.easystudy.arona.user.dto;
+package com.easystudy.arona.security.model;
 
 import com.easystudy.arona.user.model.entity.UserEntity;
 import org.springframework.security.core.GrantedAuthority;

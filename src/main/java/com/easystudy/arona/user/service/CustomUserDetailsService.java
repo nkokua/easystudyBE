@@ -1,6 +1,6 @@
 package com.easystudy.arona.user.service;
 
-import com.easystudy.arona.user.dto.CustomUserPrincipal;
+import com.easystudy.arona.security.model.CustomUserPrincipal;
 import com.easystudy.arona.user.model.entity.UserEntity;
 import com.easystudy.arona.user.repository.UserRepository;
 import jakarta.transaction.Transactional;

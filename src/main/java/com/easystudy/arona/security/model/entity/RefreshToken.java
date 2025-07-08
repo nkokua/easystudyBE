@@ -8,7 +8,7 @@ import java.time.Instant;
 
 
 @Entity
-@Table()
+@Table
 public class RefreshToken {
 
     @Id
