@@ -6,4 +6,5 @@ import lombok.Getter;
 @Getter
 public class RequestFeedBackDto {
     String json;
+    String character;
 }

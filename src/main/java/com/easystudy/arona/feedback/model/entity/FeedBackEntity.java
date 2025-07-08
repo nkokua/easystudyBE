@@ -1,10 +1,12 @@
 package com.easystudy.arona.feedback.model.entity;
 
 
+import com.easystudy.arona.feedback.dto.RequestFeedBackDto;
 import com.easystudy.arona.user.model.entity.UserEntity;
 import jakarta.persistence.*;
 
 
+import java.nio.file.attribute.UserPrincipal;
 import java.sql.Timestamp;
 import java.util.UUID;
 
@@ -31,12 +33,13 @@ public class FeedBackEntity {
         return user;
     }
 
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
 
     private Timestamp timestamp;
 
-    public FeedBackEntity() {}
+    public FeedBackEntity(UserEntity user, RequestFeedBackDto dto) {
+        this.data = dto.getJson();
+        this.character = dto.getCharacter();
+        this.user = user;
+    }
 }
 
