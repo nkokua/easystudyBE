@@ -6,7 +6,6 @@ on:
     types: [completed]
     branches:
       - 'master'
-
       - name: execute remote ssh & deploy backend server
         uses: appleboy/ssh-action@master
         with:
