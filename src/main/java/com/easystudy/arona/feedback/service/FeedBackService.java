@@ -16,8 +16,6 @@ public class FeedBackService {
         this.feedBackRepository = feedBackRepository;
     }
 
-    public FeedBackRepository getFeedBackRepository() {
 
-    }
 
 }
