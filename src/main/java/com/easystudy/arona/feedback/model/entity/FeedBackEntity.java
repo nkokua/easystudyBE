@@ -36,5 +36,7 @@ public class FeedBackEntity {
     }
 
     private Timestamp timestamp;
+
+    public FeedBackEntity() {}
 }
 
